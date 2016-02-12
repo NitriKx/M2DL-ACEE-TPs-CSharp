@@ -18,6 +18,14 @@ namespace ACEE_TP1
             // Type anonyme
             var x = new { Nom = "Connor", Prenom = "John" };
 
+            MyLibrary.Class1 c = new MyLibrary.Class1();
+
+            // Setter privé donc marche pas 
+            // c.Test = "ok";
+
+            Console.WriteLine("assert " + c.Test + " == KO");
+            c.Execute();
+            Console.WriteLine("assert " + c.Test + " == coucou");
         }
     }
 }
