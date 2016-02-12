@@ -51,6 +51,15 @@ namespace ACEE_TP1
 
             ProchaineExecution.Invoke();
             Console.WriteLine("assert " + Test + " == aurevoir");
+
+            // Méthodes anonymes
+            ProchaineExecution = delegate() { Test = "deletage methode"; };
+            Console.WriteLine("assert " + Test + " == deletage methode");
+
+            // LAMBDA
+            ProchaineExecution = () => Test = "Lambda OK";
+            Console.WriteLine("assert " + Test + " == Lambda OK");
+
         }
     }
 }
