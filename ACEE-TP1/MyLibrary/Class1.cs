@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyLibrary
 {
-    public static class Class1
+    public class Class1
     {
         public static void MonWriteLine(string message)
         {
