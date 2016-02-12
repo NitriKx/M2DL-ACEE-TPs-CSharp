@@ -28,10 +28,13 @@ namespace MyLibrary
         // FAÇON 3 - Inférence d'attributs
         public string Infered { get; private set; }
 
+
+
+
         public void Execute()
         {
             Test = "coucou";
-        } 
+        }
 
         public static void MonWriteLine(string message)
         {

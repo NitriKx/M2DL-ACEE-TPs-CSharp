@@ -8,6 +8,23 @@ namespace ACEE_TP1
 {
     class Program
     {
+
+        private static String Test = null;
+
+        public static void ExecuteBonjour()
+        {
+            Test = "bonjour";
+        }
+
+        public static void ExecuteAuRevoir()
+        {
+            Test = "aurevoir";
+        }
+
+        public delegate void Methode();
+
+        public static Methode ProchaineExecution = ExecuteBonjour; 
+
         static void Main(string[] args)
         {
             MyLibrary.Class1.MonWriteLine("Knok Knok Neo, you're in the matrix");
@@ -26,6 +43,14 @@ namespace ACEE_TP1
             Console.WriteLine("assert " + c.Test + " == KO");
             c.Execute();
             Console.WriteLine("assert " + c.Test + " == coucou");
+
+            // Indirection de méthodes
+            ProchaineExecution.Invoke();
+            ProchaineExecution = ExecuteAuRevoir;
+            Console.WriteLine("assert " + Test + " == bonjour");
+
+            ProchaineExecution.Invoke();
+            Console.WriteLine("assert " + Test + " == aurevoir");
         }
     }
 }
