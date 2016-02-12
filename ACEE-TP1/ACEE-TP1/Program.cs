@@ -10,6 +10,8 @@ namespace ACEE_TP1
     {
         static void Main(string[] args)
         {
+            MyLibrary.Class1.MonWriteLine("Knok Knok Neo, you're in the matrix");
+
         }
     }
 }
