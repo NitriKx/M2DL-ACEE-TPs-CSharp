@@ -26,12 +26,19 @@ namespace TP_Client_Serveur
             //                             where x.ClientId == 1
             //                             select x.ClientId;
 
-            // var restrictedClientList3 = clientList.
+            // var restrictedClientList3 = clientList.where(w => x.ClientId == 25).Select...
 
             // Then trigger the clients jobs
             foreach (var client in clientList)
             {
-                client.triggerJob();
+                try {
+                    client.triggerJob();
+                }
+                catch (ArgumentException e)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"ERREUR : {e.ToString()}");
+                }
             }
             Console.ReadLine();
 
