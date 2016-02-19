@@ -24,6 +24,12 @@ namespace Client
 
         public void triggerJob()
         {
+            // Try to throw an exception
+            if (ClientId == 25)
+            {
+                throw new ArgumentException(nameof(ClientId) + " " + ClientId + " unauthorized to send messages");
+            }
+            
             // Send message to the server
             if (this.SendMessageDone != null)
             {
