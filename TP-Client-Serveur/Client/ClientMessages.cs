@@ -9,12 +9,15 @@ namespace Client
     public class ClientMessages
     {
         private int clientId;
-        private Server.ServerMessages serverClientIsAttachedTo;
 
-        public ClientMessages(int clientId, Server.ServerMessages serverClientIsAttachedTo)
+        public delegate void WriteMessage(int clientId, int messageId);
+
+        private WriteMessage messageWriterLambda;
+
+        public ClientMessages(int clientId, WriteMessage messageWriterLambda)
         {
             this.clientId = clientId;
-            this.serverClientIsAttachedTo = serverClientIsAttachedTo;
+            this.messageWriterLambda = messageWriterLambda;
         }
 
         public void triggerJob()
@@ -22,7 +25,7 @@ namespace Client
             // Send messages to the server. Each message is prefixed with the client identifier.
             for (int i = 0; i < 3; i++)
             {
-                this.serverClientIsAttachedTo.receiveMessage("Client " + clientId + " has sent message n°" + i);
+                messageWriterLambda(clientId, i);
             }
         }
     }

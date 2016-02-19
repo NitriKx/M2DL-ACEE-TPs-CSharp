@@ -12,6 +12,8 @@ namespace Server
 
         public ServerMessages() { }
 
+
+
         public void receiveMessage(string message, ConsoleColor color)
         {
             Console.ForegroundColor = color;
