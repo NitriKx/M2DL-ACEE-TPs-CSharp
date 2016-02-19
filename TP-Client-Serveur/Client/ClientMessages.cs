@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace Client
 {
+    /*
+
+
+    */
     public class ClientMessages
     {
         private int clientId;
 
-        public delegate void WriteMessage(int clientId, int messageId);
+        private event EventHandler<MessageEventArgs> SendMessageDone;
 
-        private WriteMessage messageWriterLambda;
-
-        public ClientMessages(int clientId, WriteMessage messageWriterLambda)
+        public ClientMessages(int clientId, EventHandler<MessageEventArgs> SendMessageDone)
         {
             this.clientId = clientId;
-            this.messageWriterLambda = messageWriterLambda;
+            this.SendMessageDone = SendMessageDone;
         }
 
         public void triggerJob()
@@ -25,8 +27,19 @@ namespace Client
             // Send messages to the server. Each message is prefixed with the client identifier.
             for (int i = 0; i < 3; i++)
             {
-                messageWriterLambda(clientId, i);
+                if (this.SendMessageDone != null)
+                {
+                    SendMessageDone(this, new MessageEventArgs() { Message = "Client " + clientId + " has sent message " + i });
+                }
             }
         }
+    }
+
+    /*
+
+    */
+    public class MessageEventArgs: EventArgs
+    {
+        public string Message { get; set; }
     }
 }
