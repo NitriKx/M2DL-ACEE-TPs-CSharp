@@ -12,25 +12,22 @@ namespace Client
     */
     public class ClientMessages
     {
-        private int clientId;
+        public int ClientId { get; }
 
         private event EventHandler<MessageEventArgs> SendMessageDone;
 
         public ClientMessages(int clientId, EventHandler<MessageEventArgs> SendMessageDone)
         {
-            this.clientId = clientId;
+            this.ClientId = clientId;
             this.SendMessageDone = SendMessageDone;
         }
 
         public void triggerJob()
         {
-            // Send messages to the server. Each message is prefixed with the client identifier.
-            for (int i = 0; i < 3; i++)
+            // Send message to the server
+            if (this.SendMessageDone != null)
             {
-                if (this.SendMessageDone != null)
-                {
-                    SendMessageDone(this, new MessageEventArgs() { Message = "Client " + clientId + " has sent message " + i });
-                }
+                SendMessageDone(this, new MessageEventArgs() { Message = $"Client {ClientId} has sent message" });
             }
         }
     }

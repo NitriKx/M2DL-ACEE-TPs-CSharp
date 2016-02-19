@@ -13,16 +13,29 @@ namespace TP_Client_Serveur
 
         static void Main(string[] args)
         {
-            // Create the clients and attach the client to it
-            Client.ClientMessages c1 = new Client.ClientMessages(1, OnSendMessageDone);
-            Client.ClientMessages c2 = new Client.ClientMessages(2, OnSendMessageDone);
-            Client.ClientMessages c3 = new Client.ClientMessages(3, OnSendMessageDone);
+            // Create the clients with a list
+            var clientList = new List<Client.ClientMessages>();
+            for (int i = 0; i < 50; i++)
+            {
+                clientList.Add(new Client.ClientMessages(i, OnSendMessageDone));
+            }
+
+            var restrictedClientList = clientList.Skip(3).Take(40).OrderBy(client => client.ClientId);
+
+            //var restrictedClientList2 = from x in clientList
+            //                            where x.ClientId == 1
+            //                            select x.ClientId;
+
+            //var restrictedClientList3 = clientList.
 
             // Then trigger the clients jobs
-            c1.triggerJob();
-            c2.triggerJob();
-            c3.triggerJob();
+            foreach (var client in clientList)
+            {
+                client.triggerJob();
+            }
+            Console.ReadLine();
 
+            server.printHistory();
             Console.ReadLine();
         }
 

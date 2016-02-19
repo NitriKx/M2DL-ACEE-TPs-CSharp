@@ -18,12 +18,21 @@ namespace Server
         {
             Console.ForegroundColor = color;
             Console.WriteLine(message);
-            messageHistory.Add(message);
+            messageHistory.Add("[SERVER] " + DateTime.Now + " " + message);
         }
 
         public void receiveMessage(string message)
         {
             receiveMessage(message, ConsoleColor.White);
+        }
+
+        public void printHistory()
+        {
+            Console.WriteLine("[SERVER] " + DateTime.Now + " Printing sever history with " + messageHistory.Count() + " messages");
+            foreach(var m in messageHistory)
+            {
+                Console.WriteLine(m);
+            }
         }
     }
 }
