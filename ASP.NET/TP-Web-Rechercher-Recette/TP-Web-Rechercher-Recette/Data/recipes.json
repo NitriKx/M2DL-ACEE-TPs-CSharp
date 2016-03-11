@@ -1,0 +1,18 @@
+﻿[
+    {
+    "Id": "A3D071EC-B18D-415A-AE58-35858AEC5231",
+    "Title": "Recipe 01",
+    "Directions": ["Direction 1", "Direction 2", "Direction 3"]
+    },
+    {
+    "Id": "A3D071EC-B18D-415A-AE58-35858AEC5232",
+    "Title": "Recipe 02",
+    "Directions": ["Direction 1", "Direction 2", "Direction 3"]
+    },
+    {
+    "Id": "A3D071EC-B18D-415A-AE58-35858AEC5233",
+    "Title": "Recipe 03",
+    "Directions": ["Direction 1", "Direction 2", "Direction 3"]
+    }
+]
+    
