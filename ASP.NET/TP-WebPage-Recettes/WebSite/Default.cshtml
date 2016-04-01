@@ -1,7 +1,30 @@
 ﻿@{
     Layout = "~/_SiteLayout.cshtml";
     Page.Title = "Home Page";
+
+	string searchString = null;
+    List<string> results = null;
+	
+	if (Request["search"] != null) {
+		searchString = Request["search"];
+	}
+
 }
 
-
 <p>Hello</p>
+
+<form method="get">
+
+	<input name="search" type="text"/>
+
+	<input type="submit" value="Search"/>
+
+</form>
+
+@{
+	if (searchString != null) { 
+
+	@Html.Raw("<div id=\"results\">OK</div>");
+
+    }
+}
