@@ -29,9 +29,8 @@ namespace Client
         {
             // Load temperature from Service layer
             temperatureService = new System.ServiceModel.ChannelFactory<ServiceContract.MeteoServiceContract>("meteoServiceEndpoint").CreateChannel();
-
-            int temperature = temperatureService.GetTemperature();
-            this.labelTemperature.Text = temperature.ToString();
+            var meteoDataList = new BindingList<DataContract.MeteoData>(temperatureService.GetMeteoData());
+            this.dataGridView1.DataSource = meteoDataList;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

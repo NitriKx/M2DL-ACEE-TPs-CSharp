@@ -10,6 +10,6 @@ namespace ServiceContract
     public interface MeteoServiceContract
     {
         [System.ServiceModel.OperationContract]
-        Int32 GetTemperature();
+        List<DataContract.MeteoData> GetMeteoData();
     }
 }

@@ -1,0 +1,6 @@
+[submodule "ASP.NET/CORRECTIONS/Formation4"]
+	path = ASP.NET/CORRECTIONS/Formation4
+	url = https://github.com/droopygit/Formation4.git
+[submodule "ASP.NET/CORRECTIONS/Formation3"]
+	path = ASP.NET/CORRECTIONS/Formation3
+	url = https://github.com/droopygit/Formation3.git

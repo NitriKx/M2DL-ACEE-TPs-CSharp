@@ -8,9 +8,11 @@ namespace Service
 {
     public class MeteoService : ServiceContract.MeteoServiceContract
     {
-        public int GetTemperature()
+        public List<DataContract.MeteoData> GetMeteoData()
         {
-            return new Random().Next(0, 50);
+            List<DataContract.MeteoData> meteoDataList = new List<DataContract.MeteoData>();
+            meteoDataList.Add(new DataContract.MeteoData(new Random().Next(0, 40), "Toulouse"));
+            return meteoDataList;
         }
     }
 }
